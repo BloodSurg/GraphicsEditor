@@ -7,21 +7,21 @@
 
 class Canvas : public QLabel
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	Canvas(QWidget *parent = Q_NULLPTR);
-	~Canvas();
+    Canvas(QWidget *parent = Q_NULLPTR);
+    ~Canvas();
 
-	void SetBaseColor(QColor color) { baseColor = color; }
-	void SetBackgroundColor(QColor color) { backgroundColor = color; }
+	void SetBaseColor(QColor color);
+	void SetBackgroundColor(QColor color);
 
-	void SetTool(Tool tool)
-	{
+	void SetTool(Tool tool) 
+	{ 
 		this->tool = tool;
 		emit toolSelected(tool == Tool::Line || tool == Tool::Rectangle || tool == Tool::Ellipse);//Emits the checked tool to show/hide line sizes
 	}
-
+	void SetBrushShape(QPixmap pixmap);
 	void setShapePen(int width);//Sets line size and baseColor for shapePen
 
 signals:
@@ -39,11 +39,10 @@ private:
 	void drawBrush(QPoint pos, Qt::MouseButtons buttons);
 	void drawAirbrush();
 
-
 	void updateCanvas();
 	void setCurrentColor(QPainter& painter, Qt::MouseButtons buttons);
 
-	Ui::Canvas ui;
+    Ui::Canvas ui;
 
 	QImage canvas;
 	QImage canvasCopy;
@@ -51,10 +50,11 @@ private:
 	Qt::MouseButton currentButton;
 	QTimer airbrushTimer;
 	QPoint airbrushPos;
+	QPixmap brushShapeBase;
+	QPixmap brushShapeBackground;
 
 	QColor baseColor = Qt::black;
 	QColor backgroundColor = Qt::white;
-
-	QPen shapePen;//Pen used to draw lines of line, rectangle and ellipse
 	Tool tool;
+	QPen shapePen;//Pen used to draw lines of line, rectangle and ellipse
 };

@@ -15,11 +15,36 @@ Canvas::~Canvas()
 {
 }
 
+void Canvas::SetBaseColor(QColor color)
+{
+	baseColor = color;
+	// colorize pixmap for drawing
+	QPixmap drawingPixmap(brushShapeBase.size());
+	drawingPixmap.fill(color);
+	drawingPixmap.setMask(brushShapeBase.createMaskFromColor(Qt::transparent));
+	brushShapeBase = drawingPixmap;
+}
+void Canvas::SetBackgroundColor(QColor color)
+{
+	backgroundColor = color;
+	// colorize pixmap for drawing
+	QPixmap drawingPixmap(brushShapeBackground.size());
+	drawingPixmap.fill(color);
+	drawingPixmap.setMask(brushShapeBackground.createMaskFromColor(Qt::transparent));
+	brushShapeBackground = drawingPixmap;
+}
+void Canvas::SetBrushShape(QPixmap pixmap)
+{
+	brushShapeBase = pixmap;
+	brushShapeBackground = pixmap;
+	SetBaseColor(baseColor);
+	SetBackgroundColor(backgroundColor);
+}
+
 void Canvas::mousePressEvent(QMouseEvent* event)
 {
 	QPoint pos = event->pos();
 	prevPos = pos;
-
 	if (tool == Tool::Pencil)
 	{
 		QPainter painter(&canvas);
@@ -30,7 +55,6 @@ void Canvas::mousePressEvent(QMouseEvent* event)
 	else if (tool == Tool::Line || tool == Tool::Rectangle || tool == Tool::Ellipse)
 	{
 		canvasCopy = canvas;
-		
 	}
 	else if (tool == Tool::Brush)
 	{
@@ -77,7 +101,7 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
 	{
 		canvas = canvasCopy;
 		QPainter painter(&canvas);
-		
+
 		painter.setPen(shapePen);//Uses shapePen
 
 		setCurrentColor(painter, event->buttons());
@@ -93,11 +117,8 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
 	{
 		canvas = canvasCopy;
 		QPainter painter(&canvas);
-
 		painter.setPen(shapePen);//Uses shapePen
-
 		painter.setBrush(backgroundColor);
-		
 		painter.drawRect(QRect(pos, prevPos));
 		updateCanvas();
 	}
@@ -105,9 +126,7 @@ void Canvas::mouseMoveEvent(QMouseEvent* event)
 	{
 		canvas = canvasCopy;
 		QPainter painter(&canvas);
-
 		painter.setPen(shapePen);//Uses shapePen
-
 		painter.setBrush(backgroundColor);
 		painter.drawEllipse(QRect(pos, prevPos));
 		updateCanvas();
@@ -175,15 +194,14 @@ void Canvas::erase(QPoint pos)
 }
 void Canvas::drawBrush(QPoint pos, Qt::MouseButtons buttons)
 {
-	QColor color;
+	QPixmap brushShape;
 	if (buttons == Qt::LeftButton)
-		color = baseColor;
+		brushShape = brushShapeBase;
 	else if (buttons == Qt::RightButton)
-		color = backgroundColor;
-	QPixmap shape = getBrushShape(color);
+		brushShape = brushShapeBackground;
 	QPainter painter(&canvas);
 	QPoint centerPos(pos.x() - brushSize.width() / 2, pos.y() - brushSize.height() / 2);
-	painter.drawPixmap(centerPos, shape);
+	painter.drawPixmap(centerPos, brushShape);
 }
 void Canvas::drawAirbrush()
 {
@@ -205,13 +223,11 @@ void Canvas::drawAirbrush()
 	}
 	updateCanvas();
 }
-
 void Canvas::setShapePen(int width)
 {
 	shapePen.setWidth(width);//Sets line's size for shapePen
 	shapePen.setColor(baseColor);//Sets line's color for shapePen
 }
-
 void Canvas::updateCanvas()
 {
 	setPixmap(QPixmap::fromImage(canvas));

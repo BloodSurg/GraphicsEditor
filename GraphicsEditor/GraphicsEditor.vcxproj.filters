@@ -13,6 +13,9 @@
     <ClCompile Include="Canvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BrushPattern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GraphicsEditor.rc" />
@@ -25,6 +28,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Canvas.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="BrushPattern.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -41,7 +47,7 @@
     <QtUic Include="Canvas.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="ShapeSize.ui">
+    <QtUic Include="BrushPattern.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

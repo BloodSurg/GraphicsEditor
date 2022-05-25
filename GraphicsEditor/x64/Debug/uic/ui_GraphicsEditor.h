@@ -51,8 +51,11 @@ public:
     QRadioButton *buttonFill;
     QRadioButton *buttonColorPicker;
     QRadioButton *buttonEraser;
-    QGroupBox *groupBox;
+    QGroupBox *groupBrushPatterns;
     QWidget *gridLayoutWidget_2;
+    QGridLayout *layoutBrushPatterns;
+    QGroupBox *groupBox;
+    QWidget *gridLayoutWidget_3;
     QGridLayout *gridLayout;
     QRadioButton *radioButton_5px;
     QRadioButton *radioButton_2px;
@@ -65,7 +68,6 @@ public:
     QMenuBar *menuBar;
     QMenu *menuFile;
     QButtonGroup *buttonGroup;
-    QButtonGroup *buttonGroup_lineSize;
 
     void setupUi(QMainWindow *GraphicsEditorClass)
     {
@@ -188,64 +190,67 @@ public:
 
         verticalLayout_2->addWidget(buttonEraser);
 
+        groupBrushPatterns = new QGroupBox(centralWidget);
+        groupBrushPatterns->setObjectName(QString::fromUtf8("groupBrushPatterns"));
+        groupBrushPatterns->setGeometry(QRect(650, 220, 91, 171));
+        gridLayoutWidget_2 = new QWidget(groupBrushPatterns);
+        gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(10, 20, 71, 141));
+        layoutBrushPatterns = new QGridLayout(gridLayoutWidget_2);
+        layoutBrushPatterns->setSpacing(6);
+        layoutBrushPatterns->setContentsMargins(11, 11, 11, 11);
+        layoutBrushPatterns->setObjectName(QString::fromUtf8("layoutBrushPatterns"));
+        layoutBrushPatterns->setContentsMargins(0, 0, 0, 0);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(650, 220, 151, 261));
-        gridLayoutWidget_2 = new QWidget(groupBox);
-        gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(10, 10, 131, 241));
-        gridLayout = new QGridLayout(gridLayoutWidget_2);
+        groupBox->setGeometry(QRect(650, 220, 151, 171));
+        gridLayoutWidget_3 = new QWidget(groupBox);
+        gridLayoutWidget_3->setObjectName(QString::fromUtf8("gridLayoutWidget_3"));
+        gridLayoutWidget_3->setGeometry(QRect(10, 10, 131, 151));
+        gridLayout = new QGridLayout(gridLayoutWidget_3);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        radioButton_5px = new QRadioButton(gridLayoutWidget_2);
-        buttonGroup_lineSize = new QButtonGroup(GraphicsEditorClass);
-        buttonGroup_lineSize->setObjectName(QString::fromUtf8("buttonGroup_lineSize"));
-        buttonGroup_lineSize->addButton(radioButton_5px);
+        radioButton_5px = new QRadioButton(gridLayoutWidget_3);
         radioButton_5px->setObjectName(QString::fromUtf8("radioButton_5px"));
 
         gridLayout->addWidget(radioButton_5px, 3, 0, 1, 1);
 
-        radioButton_2px = new QRadioButton(gridLayoutWidget_2);
-        buttonGroup_lineSize->addButton(radioButton_2px);
+        radioButton_2px = new QRadioButton(gridLayoutWidget_3);
         radioButton_2px->setObjectName(QString::fromUtf8("radioButton_2px"));
 
         gridLayout->addWidget(radioButton_2px, 1, 0, 1, 1);
 
-        radioButton_1px = new QRadioButton(gridLayoutWidget_2);
-        buttonGroup_lineSize->addButton(radioButton_1px);
+        radioButton_1px = new QRadioButton(gridLayoutWidget_3);
         radioButton_1px->setObjectName(QString::fromUtf8("radioButton_1px"));
         radioButton_1px->setChecked(true);
 
         gridLayout->addWidget(radioButton_1px, 0, 0, 1, 1);
 
-        spinBox = new QSpinBox(gridLayoutWidget_2);
+        spinBox = new QSpinBox(gridLayoutWidget_3);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setEnabled(false);
         spinBox->setValue(15);
 
         gridLayout->addWidget(spinBox, 5, 1, 1, 1);
 
-        radioButton_3px = new QRadioButton(gridLayoutWidget_2);
-        buttonGroup_lineSize->addButton(radioButton_3px);
+        radioButton_3px = new QRadioButton(gridLayoutWidget_3);
         radioButton_3px->setObjectName(QString::fromUtf8("radioButton_3px"));
 
         gridLayout->addWidget(radioButton_3px, 2, 0, 1, 1);
 
-        radioButton_10px = new QRadioButton(gridLayoutWidget_2);
-        buttonGroup_lineSize->addButton(radioButton_10px);
+        radioButton_10px = new QRadioButton(gridLayoutWidget_3);
         radioButton_10px->setObjectName(QString::fromUtf8("radioButton_10px"));
 
         gridLayout->addWidget(radioButton_10px, 4, 0, 1, 1);
 
-        radioButton_custom = new QRadioButton(gridLayoutWidget_2);
-        buttonGroup_lineSize->addButton(radioButton_custom);
+        radioButton_custom = new QRadioButton(gridLayoutWidget_3);
         radioButton_custom->setObjectName(QString::fromUtf8("radioButton_custom"));
 
         gridLayout->addWidget(radioButton_custom, 5, 0, 1, 1);
 
-        label_2 = new QLabel(gridLayoutWidget_2);
+        label_2 = new QLabel(gridLayoutWidget_3);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         gridLayout->addWidget(label_2, 5, 2, 1, 1);
@@ -257,6 +262,7 @@ public:
         gridLayoutWidget->raise();
         labelBaseColor->raise();
         groupTools->raise();
+        groupBrushPatterns->raise();
         groupBox->raise();
         menuBar = new QMenuBar(GraphicsEditorClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -289,6 +295,7 @@ public:
         buttonFill->setText(QCoreApplication::translate("GraphicsEditorClass", "Fill", nullptr));
         buttonColorPicker->setText(QCoreApplication::translate("GraphicsEditorClass", "Color picker", nullptr));
         buttonEraser->setText(QCoreApplication::translate("GraphicsEditorClass", "Eraser", nullptr));
+        groupBrushPatterns->setTitle(QCoreApplication::translate("GraphicsEditorClass", "Brush patterns", nullptr));
         groupBox->setTitle(QCoreApplication::translate("GraphicsEditorClass", "Size", nullptr));
         radioButton_5px->setText(QCoreApplication::translate("GraphicsEditorClass", "5 px", nullptr));
         radioButton_2px->setText(QCoreApplication::translate("GraphicsEditorClass", "2 px", nullptr));

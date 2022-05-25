@@ -1,9 +1,2 @@
-﻿  Reading Qt configuration (C:/Qt/Qt5.13.0/5.13.0/msvc2017_64/bin/qmake)
-  moc GraphicsEditor.h
-  moc Canvas.h
-  Canvas.cpp
-  GraphicsEditor.cpp
-  main.cpp
-  moc_Canvas.cpp
-  moc_GraphicsEditor.cpp
-  GraphicsEditor.vcxproj -> C:\Users\DNS\Downloads\GraphicsEditor-main\x64\Debug\GraphicsEditor.exe
+﻿  GraphicsEditor.cpp
+  GraphicsEditor.vcxproj -> C:\Users\user\Desktop\GraphicsEditor-main\x64\Debug\GraphicsEditor.exe

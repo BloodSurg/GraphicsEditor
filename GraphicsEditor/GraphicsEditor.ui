@@ -316,25 +316,49 @@
      </item>
     </layout>
    </widget>
+   <widget class="QGroupBox" name="groupBrushPatterns">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>220</y>
+      <width>91</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Brush patterns</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>71</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="layoutBrushPatterns"/>
+    </widget>
+   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>650</x>
       <y>220</y>
       <width>151</width>
-      <height>261</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="title">
      <string>Size</string>
     </property>
-    <widget class="QWidget" name="gridLayoutWidget_2">
+    <widget class="QWidget" name="gridLayoutWidget_3">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
        <width>131</width>
-       <height>241</height>
+       <height>151</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
@@ -343,9 +367,6 @@
         <property name="text">
          <string>5 px</string>
         </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttonGroup_lineSize</string>
-        </attribute>
        </widget>
       </item>
       <item row="1" column="0">
@@ -353,9 +374,6 @@
         <property name="text">
          <string>2 px</string>
         </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttonGroup_lineSize</string>
-        </attribute>
        </widget>
       </item>
       <item row="0" column="0">
@@ -366,9 +384,6 @@
         <property name="checked">
          <bool>true</bool>
         </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttonGroup_lineSize</string>
-        </attribute>
        </widget>
       </item>
       <item row="5" column="1">
@@ -386,9 +401,6 @@
         <property name="text">
          <string>3 px</string>
         </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttonGroup_lineSize</string>
-        </attribute>
        </widget>
       </item>
       <item row="4" column="0">
@@ -396,9 +408,6 @@
         <property name="text">
          <string>10 px</string>
         </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttonGroup_lineSize</string>
-        </attribute>
        </widget>
       </item>
       <item row="5" column="0">
@@ -406,9 +415,6 @@
         <property name="text">
          <string>Custom</string>
         </property>
-        <attribute name="buttonGroup">
-         <string notr="true">buttonGroup_lineSize</string>
-        </attribute>
        </widget>
       </item>
       <item row="5" column="2">
@@ -427,6 +433,7 @@
    <zorder>gridLayoutWidget</zorder>
    <zorder>labelBaseColor</zorder>
    <zorder>groupTools</zorder>
+   <zorder>groupBrushPatterns</zorder>
    <zorder>groupBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -465,6 +472,5 @@
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_lineSize"/>
  </buttongroups>
 </ui>
